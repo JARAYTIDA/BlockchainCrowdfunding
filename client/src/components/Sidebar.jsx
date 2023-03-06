@@ -4,7 +4,7 @@ import { logo, sun} from '../assets';
 import {navlinks} from '../constants';
 
 const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
-  <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isAvtive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles}`} onClick = {handleClick}>
+  <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles}`} onClick = {handleClick}>
 
      {!isActive ? (<img src = {imgUrl} alt = "fund_logo" className='w-1/2 h-1/2'/>) : (<img src = {imgUrl} alt = "fund_logo" className={`w-1/2 h-1/2 ${isActive !== name && 'grayscale'}`} />)}
 
@@ -29,7 +29,7 @@ const Sidebar = () => {
             <Icon
               key={Link.name}
               {...Link}
-              // isActive={isActive}
+              isActive={IsActive}
               handleClick = {() =>{
                 if(!Link.disabled){
                   setIsActive(Link.name);
