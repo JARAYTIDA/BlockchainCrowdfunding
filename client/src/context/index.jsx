@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react';
+import React, {useContext, createContext} from 'react';
 import {useAddress, useContract, useContractWrite, useMetamask} from '@thirdweb-dev/react';
 import {ethers} from 'ethers';
 
@@ -18,7 +18,7 @@ export const StateContextProvider = ({children}) => {
                 form.title, //title
                 form.description, //description
                 form.target,
-                new Date(from.deadline).getTime(),
+                new Date(form.deadline).getTime(),
                 form.image
             ])  
 
@@ -33,9 +33,11 @@ export const StateContextProvider = ({children}) => {
     }
 
     return(
-        <StateContext.Provider value={{address, contract, createCampaign:publishCampaign}}>
+        <StateContext.Provider value={{address, contract, connect,createCampaign:publishCampaign}}>
             {children}
         </StateContext.Provider>
     )
 
 }
+
+export const useStateContext = () => useContext(StateContext);
